@@ -1,19 +1,36 @@
-import { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Welcome } from "./sample/Welcome";
 import { TeamsFxContext } from "./Context";
 import config from "./sample/lib/config";
 import { Input, Card, CardHeader, CardBody, Row, Col, Table } from "reactstrap";
 import { ExcelImportTool } from "./ExcelImportTool";
+import { Image } from "@fluentui/react-components";
 
 const showFunction = Boolean(config.apiName);
 
 export default function Tab() {
   const { themeString } = useContext(TeamsFxContext);
+  const [data, setData] = useState(null);
+
+  const fetchData = () => {
+    fetch("http://localhost:9000/testAPI")
+      .then((res) => res.text())
+      .then((data) => {
+        console.log(data);
+        setData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setData(null);
+      });
+  };
+
   return (
     <>
       <div className="content">
         <Row>
           <Col md={12}>
+            <Image src="360.jpg" width={200} height={150} />
             <Card>
               <CardHeader>
                 <h5 className="title">Download This Template </h5>
@@ -22,7 +39,8 @@ export default function Tab() {
               </CardHeader>
               <CardBody className="all-icons">
                 <ExcelImportTool />
-                <Welcome showFunction={showFunction} />
+                <button onClick={fetchData}>Fetch Data</button>
+                {data && <p>{data}</p>}
               </CardBody>
             </Card>
           </Col>
