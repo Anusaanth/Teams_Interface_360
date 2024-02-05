@@ -16,11 +16,13 @@ export default function Tab() {
           <Col md={12}>
             <Card>
               <CardHeader>
+                <h5 className="title">Download This Template </h5>
                 <h5 className="title">Read Excel Sheets </h5>
                 <p className="category"></p>
               </CardHeader>
               <CardBody className="all-icons">
                 <ExcelImportTool />
+                <Welcome showFunction={showFunction} />
               </CardBody>
             </Card>
           </Col>
