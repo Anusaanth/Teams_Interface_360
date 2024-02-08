@@ -1,0 +1,33 @@
+.file-info {
+  margin-bottom: 10px;
+}
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+}
+
+.remove-button {
+  margin-top: 10px;
+}
+
+.upload-section {
+  margin-top: 10px;
+}
+
+.backend-data {
+  margin-top: 10px;
+}
+
+.data-table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 10px auto;
+  width: 100%;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid black;
+  padding: 8px;
+}

@@ -1,0 +1,46 @@
+.white-background {
+  background-color: #007bff; /* White background color */
+}
+
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+.header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.welcome-text {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px;
+  text-align: justify;
+}
+
+.custom-card {
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #0078d4;
+  color: #ffffff;
+  padding: 15px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.download-link {
+  color: #0078d4;
+  text-decoration: none;
+  margin-left: 5px;
+}
