@@ -44,3 +44,10 @@
   text-decoration: none;
   margin-left: 5px;
 }
+
+.logo {
+  width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

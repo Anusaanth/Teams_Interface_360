@@ -26,6 +26,7 @@ export default function Tab() {
 
   return (
     <div className="container">
+    <img className="logo"src="360 Logo - CMYK (1).png" alt="360 logo"></img>
       <Row>
         <Col md={12}>
           <div className="header">

@@ -120,36 +120,59 @@ export const ExcelImportTool = () => {
   return (
     <Row>
       <Col>
-        <div className="file-info mb-2">
-          {fileName && <Label>FileName: {fileName}</Label>}
+        <div>
+          {fileName && <Label className="file-info mb-2">File Name: {fileName}</Label>}
           {!fileName && <Label>Please Upload a File</Label>}
         </div>
-        <div className="file-upload">
+
+        <div>
+
+        <input type="radio" name="choice" id="AB-P1"></input>
+        <label className="toggle-button" for="AB-P1">AB Phase 1</label>
+
+        <input type="radio" name="choice" id="AB-ARO"></input>
+        <label className="toggle-button" for="AB-ARO">AB ARO</label>
+
+        <input type="radio" name="choice" id="SK-P1"></input>
+        <label className="toggle-button" for="SK-P1">SK Phase 1</label>
+
+        <input type="radio" name="choice" id="SK-ARO"></input>
+        <label className="toggle-button" for="SK-ARO">SK ARO</label>
+
+        <input type="radio" name="choice" id="BC-P1"></input>
+        <label className="toggle-button" for="BC-P1">BC Phase 1</label>
+
+        <input type="radio" name="choice" id="BC-ARO"></input>
+        <label className="toggle-button" for="BC-ARO">BC ARO</label>
+
+        </div>
+
+        <div>
           <input
             type="file"
-            accept="xlsx"
+            accept=".xlsx, .csv"
             multiple={false}
             onChange={(e) => handleFile(e)}
             ref={fileRef}
           />
           <div>
             {fileName && (
-              <button className="align-middle" onClick={handleRemove}>
-                X
+              <button className="remove-button all-button" onClick={handleRemove}>
+                Remove
               </button>
             )}
           </div>
 
-          <div className="upload-section">
-            <button onClick={upload}>Upload Data</button>
+          <div>
+            <button className="upload-button all-button" onClick={upload}>Upload Data</button>
           </div>
 
           {data && (
             <>
               <div>
-                <button onClick={upload}>Download</button>
+                <button className="download-button all-button" onClick={upload}>Download</button>
               </div>
-              <table
+              <table className="data-table"
                 style={{
                   borderCollapse: "collapse",
                   border: "1px solid black",
