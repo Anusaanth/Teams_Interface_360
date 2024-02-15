@@ -62,8 +62,6 @@ export const ExcelImportTool = () => {
     setBackendData(null);
   };
 
-  const [backendData, setBackendData] = useState(null);
-
   const fetchData = () => {
     fetch("http://localhost:9000/testAPI")
       .then((res) => res.text())
@@ -100,13 +98,14 @@ export const ExcelImportTool = () => {
     });
   };
 
+  const [backendData, setBackendData] = useState(null);
   const upload = () => {
     const dataform = new FormData();
     dataform.append("name", fileName);
     dataform.append("file", file);
 
     axios
-      .post("http://localhost:9000/upload", dataform)
+      .post("http://127.0.0.1:8000/upload", dataform)
       .then((res) => {
         setBackendData(res.data);
         handleUploadData(res.data);
@@ -121,30 +120,44 @@ export const ExcelImportTool = () => {
     <Row>
       <Col>
         <div>
-          {fileName && <Label className="file-info mb-2">File Name: {fileName}</Label>}
-          {!fileName && <Label>Please Upload a File</Label>}
+          <Label>Choose Predictor Model</Label>
         </div>
-
         <div>
+          <input type="radio" name="choice" id="AB-P1"></input>
+          <label className="toggle-button" for="AB-P1">
+            AB Phase 1
+          </label>
 
-        <input type="radio" name="choice" id="AB-P1"></input>
-        <label className="toggle-button" for="AB-P1">AB Phase 1</label>
+          <input type="radio" name="choice" id="AB-ARO"></input>
+          <label className="toggle-button" for="AB-ARO">
+            AB ARO
+          </label>
 
-        <input type="radio" name="choice" id="AB-ARO"></input>
-        <label className="toggle-button" for="AB-ARO">AB ARO</label>
+          <input type="radio" name="choice" id="SK-P1"></input>
+          <label className="toggle-button" for="SK-P1">
+            SK Phase 1
+          </label>
 
-        <input type="radio" name="choice" id="SK-P1"></input>
-        <label className="toggle-button" for="SK-P1">SK Phase 1</label>
+          <input type="radio" name="choice" id="SK-ARO"></input>
+          <label className="toggle-button" for="SK-ARO">
+            SK ARO
+          </label>
 
-        <input type="radio" name="choice" id="SK-ARO"></input>
-        <label className="toggle-button" for="SK-ARO">SK ARO</label>
+          <input type="radio" name="choice" id="BC-P1"></input>
+          <label className="toggle-button" for="BC-P1">
+            BC Phase 1
+          </label>
 
-        <input type="radio" name="choice" id="BC-P1"></input>
-        <label className="toggle-button" for="BC-P1">BC Phase 1</label>
-
-        <input type="radio" name="choice" id="BC-ARO"></input>
-        <label className="toggle-button" for="BC-ARO">BC ARO</label>
-
+          <input type="radio" name="choice" id="BC-ARO"></input>
+          <label className="toggle-button" for="BC-ARO">
+            BC ARO
+          </label>
+        </div>
+        <div>
+          {fileName && (
+            <Label className="file-info mb-2">File Name: {fileName}</Label>
+          )}
+          {!fileName && <Label>Please Upload a File</Label>}
         </div>
 
         <div>
@@ -157,22 +170,30 @@ export const ExcelImportTool = () => {
           />
           <div>
             {fileName && (
-              <button className="remove-button all-button" onClick={handleRemove}>
+              <button
+                className="remove-button all-button"
+                onClick={handleRemove}
+              >
                 Remove
               </button>
             )}
           </div>
 
           <div>
-            <button className="upload-button all-button" onClick={upload}>Upload Data</button>
+            <button className="upload-button all-button" onClick={upload}>
+              Upload Data
+            </button>
           </div>
 
-          {data && (
+          {backendData && (
             <>
               <div>
-                <button className="download-button all-button" onClick={upload}>Download</button>
+                <button className="download-button all-button" onClick={upload}>
+                  Download
+                </button>
               </div>
-              <table className="data-table"
+              <table
+                className="data-table"
                 style={{
                   borderCollapse: "collapse",
                   border: "1px solid black",
