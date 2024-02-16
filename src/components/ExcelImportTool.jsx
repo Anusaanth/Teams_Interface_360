@@ -124,28 +124,47 @@ export const ExcelImportTool = () => {
           {fileName && <Label className="file-info mb-2">File Name: {fileName}</Label>}
           {!fileName && <Label>Please Upload a File</Label>}
         </div>
+        <br/>
+        <div>
+
+        <label>Data Driven Phase 1 Options</label>
+
+        <br />
+
+        <input type="radio" name="choice" id="DDP1-AB"></input>
+        <label className="toggle-button" for="DDP1-AB">DDP1-AB</label>
+
+        <input type="radio" name="choice" id="DDP1-SK"></input>
+        <label className="toggle-button" for="DDP1-SK">DDP1-SK</label>
+
+        <input type="radio" name="choice" id="DDP1-BC"></input>
+        <label className="toggle-button" for="DDP1-BC">DDP1-BC</label>
+
+        </div>
+
+        <br />
 
         <div>
 
-        <input type="radio" name="choice" id="AB-P1"></input>
-        <label className="toggle-button" for="AB-P1">AB Phase 1</label>
+        <label>ARO Options</label>
 
-        <input type="radio" name="choice" id="AB-ARO"></input>
-        <label className="toggle-button" for="AB-ARO">AB ARO</label>
+        <br/>
 
-        <input type="radio" name="choice" id="SK-P1"></input>
-        <label className="toggle-button" for="SK-P1">SK Phase 1</label>
 
-        <input type="radio" name="choice" id="SK-ARO"></input>
-        <label className="toggle-button" for="SK-ARO">SK ARO</label>
+        <input type="radio" name="choice" id="ARO-AB"></input>
+        <label className="toggle-button" for="ARO-AB">ARO-AB</label>
 
-        <input type="radio" name="choice" id="BC-P1"></input>
-        <label className="toggle-button" for="BC-P1">BC Phase 1</label>
+        <input type="radio" name="choice" id="ARO-SK"></input>
+        <label className="toggle-button" for="ARO-SK">ARO-SK</label>
 
-        <input type="radio" name="choice" id="BC-ARO"></input>
-        <label className="toggle-button" for="BC-ARO">BC ARO</label>
+        <input type="radio" name="choice" id="ARO-BC"></input>
+        <label className="toggle-button" for="ARO-BC">ARO-BC</label>
+
 
         </div>
+
+        <br/>
+
 
         <div>
           <input
