@@ -74,7 +74,7 @@ export const ExcelImportTool = () => {
     dataform.append("file", file);
 
     axios
-      .post("http://127.0.0.1:8000/upload-ARO-AB", dataform)
+      .post(`http://127.0.0.1:8000/upload-${selectedOption}`, dataform)
       .then((res) => {
         setBackendData(res.data);
         handleUploadData(res.data);
@@ -102,7 +102,7 @@ export const ExcelImportTool = () => {
     }
   };
 
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("DDP1-AB");
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.id);
