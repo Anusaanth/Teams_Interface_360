@@ -79,7 +79,9 @@ export const ExcelImportTool = () => {
   };
 
   const [backendData, setBackendData] = useState(null);
+  const [loading, setLoading] = useState(false);
   const upload = () => {
+    setLoading(true);
     const dataform = new FormData();
     dataform.append("name", fileName);
     dataform.append("file", file);
@@ -89,12 +91,30 @@ export const ExcelImportTool = () => {
       .then((res) => {
         setBackendData(res.data);
         handleUploadData(res.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error uploading file:", error);
         setBackendData("Error uploading file");
+        setLoading(false);
       });
   };
+
+  const handleDownload = () => {
+    if (backendData && fileName) {
+      const uploadedFileName = fileName.split('.')[0];
+      const resultFileName = uploadedFileName + '_results.csv';
+      const blob = new Blob([backendData], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = resultFileName;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }
+  };
+
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleOptionChange = (event) => {
@@ -209,14 +229,13 @@ export const ExcelImportTool = () => {
             <button className="upload-button all-button" onClick={upload}>
               Upload Data
             </button>
+            {loading && <div>Loading...</div>}
           </div>
 
           {backendData && (
             <>
               <div>
-                <button className="download-button all-button" onClick={upload}>
-                  Download
-                </button>
+                <button className="download-button all-button"onClick={handleDownload}>Download</button>
               </div>
               <table
                 className="data-table"
