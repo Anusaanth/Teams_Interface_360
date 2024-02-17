@@ -42,19 +42,6 @@ export const ExcelImportTool = () => {
     setBackendData(null);
   };
 
-  const fetchData = () => {
-    fetch("http://localhost:9000/testAPI")
-      .then((res) => res.text())
-      .then((data) => {
-        console.log(data);
-        setBackendData(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setBackendData(null);
-      });
-  };
-
   const handleUploadData = (csvData) => {
     Papa.parse(csvData, {
       header: true,
@@ -87,7 +74,7 @@ export const ExcelImportTool = () => {
     dataform.append("file", file);
 
     axios
-      .post("http://127.0.0.1:8000/upload", dataform)
+      .post("http://127.0.0.1:8000/upload-ARO-AB", dataform)
       .then((res) => {
         setBackendData(res.data);
         handleUploadData(res.data);
@@ -102,11 +89,11 @@ export const ExcelImportTool = () => {
 
   const handleDownload = () => {
     if (backendData && fileName) {
-      const uploadedFileName = fileName.split('.')[0];
-      const resultFileName = uploadedFileName + '_results.csv';
-      const blob = new Blob([backendData], { type: 'text/csv' });
+      const uploadedFileName = fileName.split(".")[0];
+      const resultFileName = uploadedFileName + "_results.csv";
+      const blob = new Blob([backendData], { type: "text/csv" });
       const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
       a.download = resultFileName;
       document.body.appendChild(a);
@@ -216,26 +203,34 @@ export const ExcelImportTool = () => {
           />
           <div>
             {fileName && (
-              <button
-                className="remove-button all-button"
-                onClick={handleRemove}
-              >
-                Remove
-              </button>
+              <div>
+                <div>
+                  <button
+                    className="remove-button all-button"
+                    onClick={handleRemove}
+                  >
+                    Remove
+                  </button>
+                </div>
+                <div>
+                  <button className="upload-button all-button" onClick={upload}>
+                    Upload Data
+                  </button>
+                  {loading && <div>Loading...</div>}
+                </div>
+              </div>
             )}
-          </div>
-
-          <div>
-            <button className="upload-button all-button" onClick={upload}>
-              Upload Data
-            </button>
-            {loading && <div>Loading...</div>}
           </div>
 
           {backendData && (
             <>
               <div>
-                <button className="download-button all-button"onClick={handleDownload}>Download</button>
+                <button
+                  className="download-button all-button"
+                  onClick={handleDownload}
+                >
+                  Download
+                </button>
               </div>
               <table
                 className="data-table"
