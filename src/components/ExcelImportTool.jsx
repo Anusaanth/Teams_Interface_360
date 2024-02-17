@@ -5,12 +5,96 @@ import axios from "axios";
 import FormData from "form-data";
 import "./ExcelImportTool.css";
 
+const RadioButtons = () => {
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.id);
+  };
+
+  return (
+    <div>
+      <div>
+        <label>Data Driven Phase 1 Options</label>
+        <br />
+        <input
+          type="radio"
+          name="choice"
+          id="DDP1-AB"
+          checked={selectedOption === "DDP1-AB"}
+          onChange={handleOptionChange}
+        />
+        <label className="toggle-button" htmlFor="DDP1-AB">
+          DDP1-AB
+        </label>
+        <input
+          type="radio"
+          name="choice"
+          id="DDP1-SK"
+          checked={selectedOption === "DDP1-SK"}
+          onChange={handleOptionChange}
+        />
+        <label className="toggle-button" htmlFor="DDP1-SK">
+          DDP1-SK
+        </label>
+        <input
+          type="radio"
+          name="choice"
+          id="DDP1-BC"
+          checked={selectedOption === "DDP1-BC"}
+          onChange={handleOptionChange}
+        />
+        <label className="toggle-button" htmlFor="DDP1-BC">
+          DDP1-BC
+        </label>
+      </div>
+
+      <br />
+
+      <div>
+        <label>ARO Options</label>
+        <br />
+        <input
+          type="radio"
+          name="choice"
+          id="ARO-AB"
+          checked={selectedOption === "ARO-AB"}
+          onChange={handleOptionChange}
+        />
+        <label className="toggle-button" htmlFor="ARO-AB">
+          ARO-AB
+        </label>
+        <input
+          type="radio"
+          name="choice"
+          id="ARO-SK"
+          checked={selectedOption === "ARO-SK"}
+          onChange={handleOptionChange}
+        />
+        <label className="toggle-button" htmlFor="ARO-SK">
+          ARO-SK
+        </label>
+        <input
+          type="radio"
+          name="choice"
+          id="ARO-BC"
+          checked={selectedOption === "ARO-BC"}
+          onChange={handleOptionChange}
+        />
+        <label className="toggle-button" htmlFor="ARO-BC">
+          ARO-BC
+        </label>
+      </div>
+    </div>
+  );
+};
+
 export const ExcelImportTool = () => {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState(null);
   const fileRef = useRef();
 
-  const acceptableFileName = ["xlsx", "csv"];
+  const acceptableFileName = ["xlsx"];
 
   const checkFileName = (name) => {
     return acceptableFileName.includes(name.split(".").pop().toLowerCase());
@@ -123,43 +207,8 @@ export const ExcelImportTool = () => {
           <Label>Choose Predictor Model</Label>
         </div>
         <br/>
-        <div>
-
-        <label>Data Driven Phase 1 Options</label>
-
-        <br />
-
-        <input type="radio" name="choice" id="DDP1-AB"></input>
-        <label className="toggle-button" for="DDP1-AB">DDP1-AB</label>
-
-        <input type="radio" name="choice" id="DDP1-SK"></input>
-        <label className="toggle-button" for="DDP1-SK">DDP1-SK</label>
-
-        <input type="radio" name="choice" id="DDP1-BC"></input>
-        <label className="toggle-button" for="DDP1-BC">DDP1-BC</label>
-
-        </div>
-
-        <br />
-
-        <div>
-
-        <label>ARO Options</label>
-
-        <br/>
-
-
-        <input type="radio" name="choice" id="ARO-AB"></input>
-        <label className="toggle-button" for="ARO-AB">ARO-AB</label>
-
-        <input type="radio" name="choice" id="ARO-SK"></input>
-        <label className="toggle-button" for="ARO-SK">ARO-SK</label>
-
-        <input type="radio" name="choice" id="ARO-BC"></input>
-        <label className="toggle-button" for="ARO-BC">ARO-BC</label>
-
-
-        </div>
+        
+        <RadioButtons />
 
         <br/>
 
@@ -167,7 +216,7 @@ export const ExcelImportTool = () => {
         <div>
           <input
             type="file"
-            accept=".xlsx, .csv"
+            accept=".xlsx"
             multiple={false}
             onChange={(e) => handleFile(e)}
             ref={fileRef}
