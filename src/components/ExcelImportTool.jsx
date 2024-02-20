@@ -116,8 +116,8 @@ export const ExcelImportTool = () => {
           <h3>Choose Predictor Model</h3>
         </div>
 
-        <div>
-          <div>
+        <div class="options-container">
+          <div class="options-box">
             <p>Data Driven Phase 1 Options</p>
             <input
               type="radio"
@@ -151,9 +151,7 @@ export const ExcelImportTool = () => {
             </label>
           </div>
 
-          <br />
-
-          <div>
+          <div class="options-box">
             <p>ARO Options</p>
             <input
               type="radio"
