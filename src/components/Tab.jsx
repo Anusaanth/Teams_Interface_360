@@ -26,12 +26,14 @@ export default function Tab() {
 
   return (
     <div className="container">
-    <img className="logo"src="360 Logo - CMYK (1).png" alt="360 logo"></img>
+      <img className="logo" src="360 Logo - CMYK (1).png" alt="360 logo"></img>
       <Row>
         <Col md={12}>
           <div className="header">
             <h1 className="welcome-text">Welcome</h1>
-            <h3>360 Engineering & Environmental Consulting</h3>
+            <h3 claswsName="company-name">
+              360 Engineering & Environmental Consulting
+            </h3>
             <p className="description">
               This website utilizes wellsite location data and licenses provided
               by the user. The inputted data undergoes processing through a
@@ -55,7 +57,7 @@ export default function Tab() {
                   href={"lic.xlsx"}
                   download="lic.xlsx"
                   className="download-link"
-                  style={{ color: "darkblue", textDecoration: "underline" }}
+                  style={{ color: "white", textDecoration: "underline" }}
                 >
                   <span>lic.xlsx</span>
                 </a>

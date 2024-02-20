@@ -14,7 +14,13 @@
 }
 
 .welcome-text {
-  font-size: 24px;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.company-name {
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -30,9 +36,10 @@
 }
 
 .card-header {
-  background-color: #0078d4;
+  background-color: #1e2a47;
   color: #ffffff;
-  padding: 15px;
+  padding: 1px 15px;
+  padding-bottom: 20px;
 }
 
 .card-body {
@@ -40,7 +47,7 @@
 }
 
 .download-link {
-  color: #0078d4;
+  color: #b0b8cc;
   text-decoration: none;
   margin-left: 5px;
 }

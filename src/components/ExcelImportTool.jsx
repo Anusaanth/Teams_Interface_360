@@ -113,14 +113,12 @@ export const ExcelImportTool = () => {
     <Row>
       <Col>
         <div>
-          <Label>Choose Predictor Model</Label>
+          <h3>Choose Predictor Model</h3>
         </div>
-        <br />
 
         <div>
           <div>
-            <label>Data Driven Phase 1 Options</label>
-            <br />
+            <p>Data Driven Phase 1 Options</p>
             <input
               type="radio"
               name="choice"
@@ -156,8 +154,7 @@ export const ExcelImportTool = () => {
           <br />
 
           <div>
-            <label>ARO Options</label>
-            <br />
+            <p>ARO Options</p>
             <input
               type="radio"
               name="choice"
@@ -194,6 +191,10 @@ export const ExcelImportTool = () => {
         <br />
 
         <div>
+          <h4>
+            Choose the file which contains the license and UWI information for
+            the sites you wish to analyze
+          </h4>
           <input
             type="file"
             accept=".xlsx"
