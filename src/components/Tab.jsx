@@ -52,7 +52,7 @@ export default function Tab() {
                   the file name and column names match those of the file you
                   upload.
                 </p>
-                Download Default Template:&nbsp;
+                Download Sample Template:&nbsp;
                 <a
                   href={"lic.xlsx"}
                   download="lic.xlsx"
